@@ -20,4 +20,18 @@
 -- Değişkenler büyük-küçük harf duyarlıdır ($username ve $USERNAME iki farklı değişkendir).
 */
 
+$string = "Ahmet";
+$string2 = 'Ahmet';
 
+$integer = 12;
+$float = 12.1;
+$boolean = true;
+$null = null;
+$array = array("Ahmet","Mehmet","Ayşe");
+
+
+//var_dump() 
+// var_dump($integer);
+
+//gettype
+echo gettype($array);

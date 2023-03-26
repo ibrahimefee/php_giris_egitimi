@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['username'])) {
+    header('Location: ./home.php');
+} 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,13 +26,25 @@
                 <div class="login-text">
                     <h2>Hoşgeldin</h2>
                     <p>Hesabını Oluştur</p>
-                    <a class="btn" href="register.html">Hesap Oluştur</a>
+                    <a class="btn" href="register.php">Hesap Oluştur</a>
                 </div>
             </div>
             <div class="col-right">
                 <div class="login-form">
                     <h2>Giriş</h2>
-                    <form>
+                    <form action="./proccess.php" method="POST">
+                        <p>
+                            <?php if (isset($_GET['error'])) {
+                                echo $_GET['error'];
+                            }
+                            ?>
+                        </p>
+                        <p>
+                            <?php if (isset($_GET['success'])) {
+                                echo $_GET['success'];
+                            }
+                            ?>
+                        </p>
                         <p>
                             <label>Email<span>*</span></label>
                             <input type="text" placeholder="Email" name="email" required>
@@ -34,7 +56,7 @@
                         <p>
                             <input type="submit" name="signin" value="Giriş Yap" />
                         </p>
-                       
+
                     </form>
                 </div>
             </div>

@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+if (!isset($_SESSION['username'])) {
+    header('Location: ./login.php?error=İzinsiz işlem');
+} 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -25,9 +35,9 @@
             <div class="container">
                 <div class="col-left" style="width: 1100px">
                     <div class="login-text">
-                        <h2>Hoşgeldin İbrahim</h2>
-                        <p>email@email.com<br></p>
-                        <a class="btn" href="register.html">Çıkış Yap</a>
+                        <h2>Hoşgeldin <?php echo $_SESSION['username'] ?></h2>
+                        <p><?php echo $_SESSION['email'] ?><br></p>
+                        <a class="btn" href="./proccess.php?logout=ok">Çıkış Yap</a>
                     </div>
                 </div>
                

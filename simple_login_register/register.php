@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['username'])) {
+    header('Location: ./home.php');
+} 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,14 +32,20 @@
             <div class="col-right">
                 <div class="login-form">
                     <h2>Kayıt ol</h2>
-                    <form>
+                    <form action="./proccess.php" method="post">
+                        <p>
+                            <?php if (isset($_GET['error'])) {
+                                echo $_GET['error'];
+                            }
+                            ?>
+                        </p>
                         <p>
                             <label> Email <span>*</span></label>
                             <input type="text" name="email" placeholder="Email" required>
                         </p>
                         <p>
                             <label>İsim<span>*</span></label>
-                            <input type="text" name="name" placeholder="isim" required>
+                            <input type="text" name="username" placeholder="isim" required>
                         </p>
                         <p>
                             <label>Şifre<span>*</span></label>
